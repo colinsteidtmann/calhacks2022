@@ -19,3 +19,5 @@ How to encrypt NFT metadata.
 
 ## What's next for Private Encrypted NFTs
 Apply this to more impactful use cases and make it more user friendly. I think the idea of encrypted metadata is really powerful and can be applied to many places. All about execution, user interface, and community. 
+
+https://devpost.com/software/private-encrypted-nfts?ref_content=user-portfolio&ref_feature=in_progress
