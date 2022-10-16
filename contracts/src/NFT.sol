@@ -12,7 +12,7 @@ contract NFT is ERC721URIStorage, ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    constructor() ERC721("Lit NFT", "LITNFT") {}
+    constructor() ERC721("Private Data", "SHH") {}
 
     mapping(uint256 => nft) private tokenIdToNft;
 
@@ -54,7 +54,7 @@ contract NFT is ERC721URIStorage, ReentrancyGuard {
             );
     }
 
-    function mintLitNft(
+    function mintNft(
         string memory name,
         string memory imageUrl,
         string memory encryptedDescription,
