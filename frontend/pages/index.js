@@ -30,11 +30,17 @@ export default function Home() {
 
   if (contract) {
     return (
-      <div>
-        <ConnectButton />
-        <MintNFTForm contract={contract} />
-        <DisplayNFTs contract={contract} />
+      <div className="p-8">
+        <div className="flex flex-row-reverse mb-5">
+          <ConnectButton />
+        </div>
+        <div className="">
+          <h3 class="text-6xl leading-tight mb-4 pb-4 border-b text-center">This is For You!</h3>
+          <MintNFTForm contract={contract} />
+          <DisplayNFTs contract={contract} />
+        </div>
       </div>
+
     );
   } else {
     return (<div>Loading ...</div>);

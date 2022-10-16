@@ -35,7 +35,10 @@ export default function DisplayNFTs({ contract }) {
         return <div>Loading ...</div>;
     }
     return (
-        <div>
+
+        <div className="my-5 grid grid-cols-2 auto-rows-auto gap-10 justify-items-center">
+            <h2 className="font-medium leading-tight text-3xl col-span-2 text-center">Gallery</h2>
+
             {nfts.map((nft, index) => <NFT key={index} data={nft} />)}
         </div>
     );
