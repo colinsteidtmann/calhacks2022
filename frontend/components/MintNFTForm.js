@@ -17,7 +17,7 @@ export default function MintNFTForm({ contract }) {
 
         const { encryptedString, encryptedSymmetricKey } = await lit.encryptText(description);
 
-        await contract.mintLitNft(name, imageUrl, encryptedString, encryptedSymmetricKey);
+        await contract.mintNft(name, imageUrl, encryptedString, encryptedSymmetricKey);
         setForm({ name: "", imageUrl: "", description: "" });
     }
 

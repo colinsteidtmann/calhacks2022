@@ -38,6 +38,9 @@ export default function Home() {
           <h3 class="text-6xl leading-tight mb-4 pb-4 border-b text-center">This is For You!</h3>
           <MintNFTForm contract={contract} />
           <DisplayNFTs contract={contract} />
+
+          <h4 class="my-5 font-medium leading-tight text-xl text-center">Contract Address - <a className="underline text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4" target="_blank" href={`https://testnet.snowtrace.io/address/${NFT_ADDRESS}`}>{NFT_ADDRESS}</a></h4>
+          <a className="text-center" target="_blank" href="https://github.com/colinsteidtmann/calhacks/tree/main/contracts"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" className="w-10 h-10" /></a>
         </div>
       </div>
 
