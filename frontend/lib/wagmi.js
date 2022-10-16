@@ -1,17 +1,14 @@
 import '@rainbow-me/rainbowkit/styles.css';
-import {
-    getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
     chain,
     configureChains,
     createClient,
 } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
 import { infuraProvider } from 'wagmi/providers/infura';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
-
+// Avalanche chain details for wagmi client
 const avalancheChain = {
     id: 43_113,
     name: 'Avalanche Fuji',
@@ -30,8 +27,9 @@ const avalancheChain = {
     testnet: true,
 };
 
+// Providers forwards our requests to the blockchain
 export const { chains, provider } = configureChains(
-    [avalancheChain, chain.arbitrum],
+    [avalancheChain, chain.polygon],
     [
         infuraProvider({ apiKey: process.env.NEXT_PUBLIC_API_KEY }),
         jsonRpcProvider({
@@ -43,11 +41,13 @@ export const { chains, provider } = configureChains(
     ]
 );
 
+// Rainbow kit wallet connector
 const { connectors } = getDefaultWallets({
-    appName: 'My RainbowKit App',
+    appName: 'Cal Hacks App',
     chains
 });
 
+// Wagmi API client
 export const wagmiClient = createClient({
     autoConnect: true,
     connectors,

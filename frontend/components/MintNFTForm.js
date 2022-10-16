@@ -1,16 +1,23 @@
 import { useState, useEffect } from "react";
+import lit from "../lib/lit";
+
+// Form to Mint NFT w/encrypted description
 export default function MintNFTForm({ contract }) {
+
     const [form, setForm] = useState({
         name: "",
         imageUrl: "",
-        encryptedDescription: "",
-        encryptedSymmetricKey: ""
+        description: "",
     });
 
+    // Form Submit Handler
     async function onMint() {
-        const { name, imageUrl, encryptedDescription, encryptedSymmetricKey } = form;
+        const { name, imageUrl, description } = form;
 
-        await contract.mintLitNft(name, imageUrl, encryptedDescription, encryptedSymmetricKey);
+        const { encryptedString, encryptedSymmetricKey } = await lit.encryptText(description);
+
+        await contract.mintLitNft(name, imageUrl, encryptedString, encryptedSymmetricKey);
+        setForm({ name: "", imageUrl: "", description: "" });
     }
 
     return (
@@ -42,11 +49,11 @@ export default function MintNFTForm({ contract }) {
             <label>
                 Encrypted Description:
                 <input
-                    value={form.encryptedDescription}
+                    value={form.description}
                     onChange={e => {
                         setForm({
                             ...form,
-                            encryptedDescription: e.target.value
+                            description: e.target.value
                         });
                     }}
                 />
