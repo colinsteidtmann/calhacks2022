@@ -8,6 +8,9 @@ import {
     createClient,
 } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
+import { infuraProvider } from 'wagmi/providers/infura';
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
+
 
 const avalancheChain = {
     id: 43_113,
@@ -19,7 +22,7 @@ const avalancheChain = {
         symbol: 'AVAX',
     },
     rpcUrls: {
-        default: 'https://api.avax-test.network/ext/bc/C/rpc',
+        default: process.env.NEXT_PUBLIC_RPC_URL,
     },
     blockExplorers: {
         default: { name: 'SnowTrace', url: 'https://testnet.snowtrace.io' },
@@ -29,12 +32,22 @@ const avalancheChain = {
 
 export const { chains, provider } = configureChains(
     [avalancheChain, chain.arbitrum],
-    [publicProvider()]
+    [
+        infuraProvider({ apiKey: process.env.NEXT_PUBLIC_API_KEY }),
+        jsonRpcProvider({
+            rpc: (chain) => {
+                if (chain.id !== avalancheChain.id) return null;
+                return { http: chain.rpcUrls.default };
+            },
+        }),
+    ]
 );
-export const { connectors } = getDefaultWallets({
+
+const { connectors } = getDefaultWallets({
     appName: 'My RainbowKit App',
     chains
 });
+
 export const wagmiClient = createClient({
     autoConnect: true,
     connectors,
