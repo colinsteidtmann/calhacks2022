@@ -1,5 +1,12 @@
 ### Calhacks 2022 - Private NFT Metadata
+
+View on [Devpost](https://devpost.com/software/private-encrypted-nfts)
+
+[<img width="525" alt="Demo Video" src="https://user-images.githubusercontent.com/34821973/199287666-728e4a84-ab80-4d0a-ae96-cf78b9bab5da.png">
+](https://youtu.be/s2DZ1wR7iYY)
+
 ## Inspiration
+
 NFT metadata is usually public. This would be bad if NFTs were being used as event tickets or private pieces of art. We need private NFT metadata.
 
 ## What it does
